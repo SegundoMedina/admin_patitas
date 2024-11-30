@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<section>
+    <div class="card">
+        <div class="card-body">Clientes</div>
+        <table class="table table-striped table-bordered w-100">
+            <tbody>
+                {% for cliente in customers_list %}
+                <tr>
+                    <td>{{ cliente.first_name }}</td>
+                    <td>{{ cliente.last_name }}</td>
+                    <td>{{ cliente.address }}</td>
+                    <td>
+                        <a href="#" class="btn btn-primary">Ver mas</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{% endblock %}

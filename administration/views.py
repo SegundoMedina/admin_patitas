@@ -18,6 +18,29 @@ def v_index(request):
 
 def v_providers(request):
     context = {
-        "provs": Provider.objects.all() 
+        "providers_list": Provider.objects.all()
     }
+    # Obtenemos el valor del query sort_by
+    # Si no dan un valor, por defecto se usa "-"
+    f_sort_by = request.GET.get("sort_by", "-")
+    if f_sort_by == "-":  # Si sort_by es -, no hago nada
+        pass
+    else:
+        if f_sort_by == "first_name": # Si sort_by es first_name
+            context["providers_list"] = Provider.objects.all().order_by("first_name")
+        elif f_sort_by == "last_name":
+            context["providers_list"] = Provider.objects.all().order_by("last_name")
+
     return render(request, "administration/providers.html", context)
+
+def v_customers(request):
+    context = {
+        "customers_list": Customer.objects.all()
+    }
+    return render(request, "administration/customers.html", context)
+
+def v_pet(request):
+    context = {
+        "pet_list": Pet.objects.all()
+    }
+    return render(request, "administration/pet.html", context)
