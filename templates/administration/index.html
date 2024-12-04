@@ -19,6 +19,7 @@
             </a>
         </div>
     </div>
+    {% if user.is_authenticated %}
     <div class="card bg-success">
         <div class="card-body text-white">
             <h2>{{ n_customers }} Clientes</h2>
@@ -36,6 +37,7 @@
             </a>
         </div>
     </div>
+    {% endif %}
     <div class="card bg-danger">
         <div class="card-body text-white">
             <h2>{{ n_pet }} Mascotas</h2>
